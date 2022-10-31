@@ -10,5 +10,5 @@ So there are 3 user levels, administrator, doctor and patient. When a patient bo
 
 # System design
 ## UML case diagram
-![image](https://user-images.githubusercontent.com/44478872/198988283-92ad1648-04b8-4ec0-86ca-6068f2ceef3d.png)
+![image](https://user-images.githubusercontent.com/44478872/198989306-8c33e1b1-064e-4365-bece-ab1c9b6f592a.png)
 
