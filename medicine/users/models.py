@@ -23,9 +23,10 @@ class Patient(Person):
     
 class Appointment(models.Model):
     scheduled_time = models.DateField()
-    patient = models.OneToOneField()
-    doctor = models.OneToOneField()
+    # patient = models.OneToOneField(d)
+    # doctor = models.OneToOneField()
     
 class Schedule(models.Model):
-    schedule = models.DateField()
-    doctor = models.OneToOneField()
+    # schedule = models.DateField()
+    # doctor = models.OneToOneField()
+    pass
