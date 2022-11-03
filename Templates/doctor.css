@@ -1,0 +1,143 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background:linear-gradient(45deg,  #0d1d32c0, #02132edb), url('Images/blackdoctors.jpg');
+    background-size: cover; 
+    overflow: hidden;
+}
+.name h1{
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+.name{
+    display: flex;
+}
+.name h2{
+    font-size: .9rem;
+    margin-top: 13px;
+    margin-left: 5px;
+    color: white;
+}
+.platform{
+    color: #ffffff;
+}
+ul{
+    list-style: none;
+    margin: 30px 30px 0 30px;
+}
+li{
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+.links li:hover{
+    border-bottom: 1px solid #4b105d;
+}
+li a{ 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 2px;
+    color: white;
+}
+.link{
+    border: 1px solid rgb(255, 255, 255);
+    padding: 1px 5px;
+    border-radius: 5px;
+}
+.link:hover{
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.link a:hover{
+    color: rgb(78, 4, 62);
+}
+header{
+    color: white;
+    width:100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1024px;
+    height: 76px;
+    margin: 0 170px;
+}  
+main{
+    width: 80%;
+    margin: 10px auto;
+}
+.form{
+    /* background-color: #4b105d; */
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: .5rem;
+}
+.input-group{
+    margin: 10px;
+}
+.input-group input, textarea{
+    width: 100%;
+    background: #efefef;
+    width: 100%;
+    padding: .7rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 0.125rem solid white;
+    outline: none;
+}
+.password, 
+.confirm-password{
+    float: left;
+}
+.first-name,
+.last-name{
+    float: left;
+}
+button{
+    width: 100%;
+    background-color: #02132e ;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: .5rem;
+    font-size: 1rem;
+}
+.input-group input:focus, textarea:focus{
+    border: 2px solid #4b105d;
+}
+textarea{
+    color: rgb(124, 121, 121);
+    font-family: inherit;
+}
+.therapists p{
+    text-align: center;
+    margin: 5px;
+    color: white;
+}
+.therapists a{
+    color: white;
+}
+.therapists a:hover{
+    color: #535d10;
+}
+#cpic{
+    color: white;
+    text-align: right;
+}
