@@ -15,13 +15,15 @@
 			<div class="col align-items-center flex-col sign-up">
 				<div class="form-wrapper align-items-center">
 					<form action="#" class="form sign-up" method="post" enctype="multipart/form-data">
-						<div class="input-group first-name">
-							<label for="name"></label>
-							<input id="name" name="name" type="text" placeholder="First Name">
-						</div>
-						<div class="input-group last-name">
-							<label for="name"></label>
-							<input id="name" name="name" type="text" placeholder="Last Name">
+						<div class="names">
+							<div class="input-group firstname">
+								<label for="firstname"></label>
+								<input type="text" id="firstname" name="firstname" placeholder="First Name">
+							</div>
+							<div class="input-group lastname">
+								<label for="lastname"></label>
+								<input type="text" id="lastname" name="lastname" placeholder="Last Name">
+							</div>
 						</div>
 						<div class="input-group">
 							<label for="mail"></label>
@@ -47,11 +49,11 @@
 							<label for="photo"></label>
 							<input type="file" id="photo" name="photo" placeholder="photo">
 						</div>
-						<div class="input-group">
+						<div class="input-group password">
 							<label for="password"></label>
 							<input type="password" name="password" placeholder="Password">
 						</div>
-						<div class="input-group">
+						<div class="input-group passconfirm">
 							<label for="passconfirm"></label>
 							<input type="password" name="passconfirm" id="passconfirm" placeholder="Confirm password">
 						</div>
