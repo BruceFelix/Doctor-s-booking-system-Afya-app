@@ -4,78 +4,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="doctor.css">
-    <title>Doctor sign up</title>
+    <link rel="stylesheet" href="doctors.css">
+    <title>Doctors home page</title>
 </head>
 <body>
     <header>
-        <nav>
             <div class="name">
-                <h1>Doctors</h1>
-                <h2>Signup <br> <span class="platform">Platform</span></h2>
+                <h1>Medic</h1>
+                <h2>Doctor's <br> <span class="platform">Platform</span></h2>
             </div>
-            <a href="index.html">Home</a>
-        </nav>
+            <div class="navigation">
+                <ul>
+                    <li>Dr. Albert Kahira</li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </div>
     </header>
     <main>
-        <div class="form">
-            <form action="#" method="post" enctype="multipart/form-data">
-                <div class="input-group first-name">
-                    <label for="firstname"></label>
-                    <input id="firstname" name="firstname" type="text" placeholder="First Name">
-                </div>
-                <div class="input-group last-name">
-                    <label for="lastname"></label>
-                    <input id="lastname" name="lastname" type="text" placeholder="Last Name">
-                </div>
+        <div class="schedule">
+            <h3>Create schedule</h3>
+            <form action="">
                 <div class="input-group">
-                    <label for="mail"></label>
-                    <input type="email" name="mail" placeholder="Email">
+                    <h4>Select the days you'll be available</h4>
+                    <input type="checkbox" id="monday" name="monday" value="Monday">
+                    <label for="monday">Monday</label><br>
+                    <input type="checkbox" id="tueday" name="tuesday" value="Tuesday">
+                    <label for="tueday">Tuesday</label><br>
+                    <input type="checkbox" id="wednesday" name="wednesday" value="Wednesday">
+                    <label for="wednesday">Wednesday</label><br>
+                    <input type="checkbox" id="thursday" name="thursday" value="thursday">
+                    <label for="Thursday">Thursday</label><br>    
+                    <input type="checkbox" id="friday" name="friday" value="friday">
+                    <label for="friday">Friday</label><br>
                 </div>
-                <div class="input-group">
-                    <label for="number"></label>
-                    <input type="tel" name="number" placeholder="Phone Number">
-                </div>
-                <div class="input-group">
-                    <label for="text"></label>
-                    <input type="text" name="number" placeholder="Speciality">
-                </div>
-                <div class="input-group">
-                    <label for="gender"></label>
-                        <select id="gender" name="gender" >
-                            <option value="" disabled selected hidden>Choose Gender...</option>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                        </select>
-                </div>
-                <div class="input-group">
-                    <label for="county"></label>
-                    <select id="county" name="county" >
-                        <option value="" disabled selected hidden>Choose your county...</option>
-                        <option value="Mombasa">Mombasa</option>
-                        <option value="Nairobi">Nairobi</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="profile" id="cpic"></label>
-                    <input type="file" required name="profile">
-                </div>
-                <div class="input-group password">
-                    <label for="password"></label>
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-                <div class="input-group confirm-password">
-                    <label for="passconfirm"></label>
-                    <input type="password" name="passconfirm" placeholder="Confirm password">
-                 </div>
-                   
-                </div>
-                <div class="input-group">
-                    <button>
-                        Sign up
-                    </button>
+                <div class="actions">
+                    <div class="submit">
+                        <label for="submit"></label>
+                        <input type="submit" id="submit" name="submit" value="Submit">
+                    </div>
+                    <div class="cancel">
+                        <label for="cancel"></label>
+                        <input type="reset" id="cance" name="cancel" value="Cancel">
+                    </div>
                 </div>
             </form>
+        </div>
+        <div class="appointment">
+            <h4>Booked Appointments</h4>
+            <table border="1">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Day</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
+                </tr>
+                <tr>
+                    <td>BruceFelix Macharia</td>
+                    <td>brucefelixm@gmail.com</td>
+                    <td>0792743861</td>
+                    <td>Monday</td>
+                    <td class="action one"> <a href="#">Accept</a></td>
+                    <td class="action two"> <a href="#">Reject</a></td>
+                </tr>
+                <tr>
+                    <td>BruceFelix Macharia</td>
+                    <td>brucefelixm@gmail.com</td>
+                    <td>0792743861</td>
+                    <td>Monday</td>
+                    <td class="action one "> <a href="#">Accept</a></td>
+                    <td class="action two"> <a href="#">Reject</a></td>
+                </tr>
+                <tr>
+                    <td>BruceFelix Macharia</td>
+                    <td>brucefelixm@gmail.com</td>
+                    <td>0792743861</td>
+                    <td>Monday</td>
+                    <td class="action one "> <a href="#">Accept</a></td>
+                    <td class="action two"> <a href="#">Reject</a></td>
+                </tr>
+                <tr>
+                    <td>BruceFelix Macharia</td>
+                    <td>brucefelixm@gmail.com</td>
+                    <td>0792743861</td>
+                    <td>Monday</td>
+                    <td class="action one"> <a href="#">Accept</a></td>
+                    <td class="action two "><a href="#">Reject</a></td>
+                </tr>
+                <tr>
+                    <td>BruceFelix Macharia</td>
+                    <td>brucefelixm@gmail.com</td>
+                    <td>0792743861</td>
+                    <td>Monday</td>
+                    <td class="action one"> <a href="#">Accept</a></td>
+                    <td class="action two"> <a href="#">Reject</a></td>
+                </tr>
+            </table>
         </div>
     </main>
 </body>
