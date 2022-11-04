@@ -1,6 +1,6 @@
 # Doctor-s-booking-system-Afya-app
 SEPA sprint 2: Project 2 (Doctor Booking System (Afya App)
-
+Road map - https://www.figma.com/file/LUZha6AcQpFI0TjFefA41y/Doctor-Booking-System-(Afya-App)?node-id=0%3A1
 ## Decription
 From time to time, patients usually require specialized treatment in cities such as Nairobi. You can either visit the doctor's office to get an appointment or make a phone call. We want to simplify the process by allowing patients to see a list of doctors in a certain city and book an appointment with them.
 
