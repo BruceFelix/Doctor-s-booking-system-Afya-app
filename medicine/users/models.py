@@ -20,7 +20,7 @@ class Doctor(Person):
         ('M', 'Mombasa'),
     )
     Speciality = models.CharField(max_length=30)
-    city = models.CharField(max_length=1, Options=CITY_OPTIONS)
+    city = models.CharField(max_length=30)
 
 class Patient(Person):
     date_of_birth = models.DateField(null=True)
