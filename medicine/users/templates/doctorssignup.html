@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/doctorsignup.css' %}">
+    <title>Doctor sign up</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="name">
+                <h1>Doctors</h1>
+                <h2>Signup <br> <span class="platform">Platform</span></h2>
+            </div>
+            <a href="{% url 'index' %}">Home</a>
+        </nav>
+    </header>
+    <main>
+        <div class="form">
+            <form action="#" method="post" enctype="multipart/form-data">
+                <div class="input-group first-name">
+                    <label for="firstname"></label>
+                    <input id="firstname" name="firstname" type="text" placeholder="First Name">
+                </div>
+                <div class="input-group last-name">
+                    <label for="lastname"></label>
+                    <input id="lastname" name="lastname" type="text" placeholder="Last Name">
+                </div>
+                <div class="input-group">
+                    <label for="mail"></label>
+                    <input type="email" name="mail" placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <label for="number"></label>
+                    <input type="tel" name="number" placeholder="Phone Number">
+                </div>
+                <div class="input-group">
+                    <label for="text"></label>
+                    <input type="text" name="number" placeholder="Speciality">
+                </div>
+                <div class="input-group">
+                    <label for="gender"></label>
+                        <select id="gender" name="gender" >
+                            <option value="" disabled selected hidden>Choose Gender...</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                </div>
+                <div class="input-group">
+                    <label for="county"></label>
+                    <select id="county" name="county" >
+                        <option value="" disabled selected hidden>Choose your county...</option>
+                        <option value="Mombasa">Mombasa</option>
+                        <option value="Nairobi">Nairobi</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="profile" id="cpic"></label>
+                    <input type="file" required name="profile">
+                </div>
+                <div class="input-group password">
+                    <label for="password"></label>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="input-group confirm-password">
+                    <label for="passconfirm"></label>
+                    <input type="password" name="passconfirm" placeholder="Confirm password">
+                 </div>
+                   
+                </div>
+                <div class="input-group">
+                    <button>
+                        Sign up
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

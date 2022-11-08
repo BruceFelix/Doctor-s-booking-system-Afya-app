@@ -19,5 +19,6 @@ from django.urls import path, include
 admin.site.site_header = "Medic Doctors Admin Page"
 admin.site.index_title = "Administratior"
 urlpatterns = [
+    path('users/', include('users.urls')),
     path('admin/', admin.site.urls),
 ]
