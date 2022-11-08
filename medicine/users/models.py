@@ -15,8 +15,12 @@ class Person(models.Model):
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
 
 class Doctor(Person):
+    CITY_OPTIONS =(
+        ('N', 'Nairobi'),
+        ('M', 'Mombasa'),
+    )
     Speciality = models.CharField(max_length=30)
-    city = models.CharField(max_length=30)
+    city = models.CharField(max_length=1, Options=CITY_OPTIONS)
 
 class Patient(Person):
     date_of_birth = models.DateField(null=True)
