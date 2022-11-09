@@ -11,7 +11,7 @@ class Person(models.Model):
     lastname = models.CharField(max_length=30)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     email = models.EmailField(unique=True)
-    profile_pic = models.ImageField(null=True, blank=True)
+    # profile_pic = models.ImageField(null=True, blank=True)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
 
 class Doctor(Person):
@@ -24,7 +24,9 @@ class Doctor(Person):
 
 class Patient(Person):
     date_of_birth = models.DateField(null=True)
-    
+    def __str__(self):
+        return super().__str__
+
 class Appointment(models.Model):
     scheduled_time = models.DateField()
     # patient = models.OneToOneField(d)
