@@ -10,7 +10,7 @@
     <title>Medic Booking System</title>
 </head>
 <body>
-    <header style="background: linear-gradient(45deg, #0d1d32c0, #02132edb),url('../images/doctors.jpg');">
+    <header style="background: linear-gradient(45deg, #0d1d32c0, #02132edb),url('../static/images/doctors.jpg') no-repeat; background-size: cover;">
         <nav>
             <div class="container">
                 <div class="name">
@@ -28,7 +28,7 @@
                 <p>Book an apppointment with a qualified doctor easily and quickly.</p>
                 <p>Talk in person or by phone.</p>
                 <p>Help us match you with the right Doctor</p>
-                <a href="login.html"><button><span class="search"><img src="../static/Images/magnifying-glass-solid.svg" alt=""></span> Find a Doctor</button></a>
+                <a href="login.html"><button><span class="search"><img src="{% static '../static/images/magnifying-glass-solid.svg' %}" alt=""></span> Find a Doctor</button></a>
             </div>
         </nav>
     </header>
