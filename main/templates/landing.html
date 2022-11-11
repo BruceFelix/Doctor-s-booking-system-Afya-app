@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Medic Booking System {% endblock %}
+
+<link rel="stylesheet" href="{% static '../static/css/landing.css' %}">
+
+{% block content %}
+<div class="description">
+    <h1>The Smarter Way to Book an Appointment</h1>
+    <p>Book an apppointment with a qualified doctor easily and quickly.</p>
+    <p>Talk in person or by phone.</p>
+    <p>Help us match you with the right Doctor</p>
+    <a href="login.html"><button><span class="search"><img src="{% static '../static/images/magnifying-glass-solid.svg' %}" alt=""></span> Find a Doctor</button></a>
+</div>
+{% endblock %}
