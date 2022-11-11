@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
-def base(response):
-    return render(response, 'base.html')
+def base(request):
+    return render(request, 'main/base.html')
 
 def landing(request):
-    return render(request, 'landing.html')
+    return render(request, 'main/landing.html')
