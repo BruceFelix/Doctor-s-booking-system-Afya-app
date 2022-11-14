@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/landing.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/doctors.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/patient.css' %}">
+
+    <title>{% block title %}Medic{% endblock %}</title>  
+</head>
+<body>
+    <header>
+            <div class="name">
+                <h1> Medic</h1>
+                <h2> Booking </br> Platform</h2>
+            </div>
+            <!-- <div class="link">
+                <ul>
+                    <li><a href="">Register</a></li>
+                </ul>
+            </div> -->
+    </header>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
