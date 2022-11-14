@@ -1,8 +1,8 @@
 
 .description {
-    padding: 200px;
     color: rgb(255, 255, 255);
     text-align: center;
+    height: 70vh;
 }
 .description h1{
     font-size: 3.85rem;
