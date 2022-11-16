@@ -8,8 +8,8 @@ class MyBaseUser(AbstractUser):
         ('M', 'Male'),
         ('F', 'Female'),
     ]
-    username = models.CharField(max_length=500)
-    password = models.CharField(max_length=500, null=True)
+    username = models.CharField(max_length=200, unique=True)
+    password = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=128)
     mobile_number = models.CharField(max_length=10, unique=True)

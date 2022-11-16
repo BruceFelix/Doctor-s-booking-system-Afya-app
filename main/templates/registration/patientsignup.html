@@ -1,0 +1,63 @@
+{% extends 'registration/base.html' %}
+{% block title %}Patient Sign up page {% endblock %}
+
+{% block content %}
+	<form class="patient" method="POST">
+			<div class="input-group">
+				<label for="firstname"></label>
+				<input type="text" id="firstname" name="firstname" placeholder="First Name">
+			</div>
+			<div class="input-group">
+				<label for="lastname"></label>
+				<input type="text" id="lastname" name="lastname" placeholder="Last Name">
+			</div>
+		<div class="input-group">
+			<label for="mail"></label>
+			<input id="mail" type="email" name="mail" placeholder="Email">
+		</div>
+		<div class="input-group">
+			<label for="dob"></label>
+			<input type="date" id="dob" name="dob" placeholder="DOB">
+		</div>
+		<div class="input-group">
+			<label for="gender"></label>
+				<select id="gender" name="gender" >
+					<option value="" disabled selected hidden>Choose Gender...</option>
+					<option value="Female">Female</option>
+					<option value="Male">Male</option>
+				</select>
+		</div>
+		<div class="input-group number">
+			<label for="number"></label>
+			<input id="number" name="number" type="tel" placeholder="Phone number">
+		</div>
+		<div class="input-group photo">
+			<label for="photo"></label>
+			<input type="file" id="photo" name="photo" placeholder="photo">
+		</div>
+		<div class="input-group password">
+			<label for="password"></label>
+			<input type="password" name="password" placeholder="Password">
+		</div>
+		<div class="input-group passconfirm">
+			<label for="passconfirm"></label>
+			<input type="password" name="passconfirm" id="passconfirm" placeholder="Confirm password">
+		</div>
+		<button>
+			Sign up
+		</button>
+		<!-- <div class="therapists">
+			<p>
+				<p>Are you a Doctor? <a href=""><b>Sign up here!</b></a></p>
+			</p>
+		</div>
+		<p>
+			<span>
+				Already have an account?
+			</span>
+			<b onclick="toggle()" class="pointer">
+				Sign in here
+			</b>
+		</p> -->
+	</form>
+{% endblock %}
