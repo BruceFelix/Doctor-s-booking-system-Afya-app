@@ -32,7 +32,6 @@ header{
     color: white;
     font-size: 2.5rem;
     font-weight: 100;
-    font-family: 'Great Vibes', cursive;
 
 }
 .name{
@@ -40,7 +39,6 @@ header{
 
 }
 .name h2{
-    font-family: 'Great Vibes', cursive;
     font-size: .9rem;
     margin-top: 11px;
     margin-left: 5px;

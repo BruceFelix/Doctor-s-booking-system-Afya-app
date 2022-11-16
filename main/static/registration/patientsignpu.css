@@ -1,0 +1,44 @@
+.patient form{
+    width: 50%;
+    height: 83vh;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.807);
+    margin: 10px auto;
+    border-radius: 0 0 10% 10%;
+    padding: 40px;
+}
+a{
+    color: black;
+}
+
+.patient{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.patient button {
+    cursor: pointer;
+    width: 15%;
+    padding: .6rem 0;
+    border-radius: 1rem;
+    border: none;
+    background-color: #02132e;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+input{
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: rgb(229, 229, 229);
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 20px;
+}
+input:focus{
+    border: 0.125rem solid #02132e;
+}
+.patient a{
+    color: #02132e;
+    font-weight: 900;
+}

@@ -25,3 +25,6 @@ def sign_up(request):
     
 def signup(request):
     return render(request, 'registration/signup.html', )
+
+def patient_signup(request):
+    return render(request, 'registration/patientsignup.html')
