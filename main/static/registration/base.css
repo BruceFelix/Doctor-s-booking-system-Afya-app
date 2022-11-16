@@ -30,14 +30,17 @@ header{
 }
 .name h1{
     color: white;
-    font-family: 'Lobster', cursive;
     font-size: 2.5rem;
     font-weight: 100;
+    font-family: 'Great Vibes', cursive;
+
 }
 .name{
     display: flex;
+
 }
 .name h2{
+    font-family: 'Great Vibes', cursive;
     font-size: .9rem;
     margin-top: 11px;
     margin-left: 5px;
