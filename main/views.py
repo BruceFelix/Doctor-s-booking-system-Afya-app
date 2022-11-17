@@ -28,3 +28,6 @@ def signup(request):
 
 def patient_signup(request):
     return render(request, 'registration/patientsignup.html')
+
+def doctor_signup(request):
+    return render(request, 'registration/doctorssignup.html')
