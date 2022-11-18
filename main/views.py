@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from . forms import RegistrationForm
 from django.contrib.auth import login, logout, authenticate
+from .models import MyBaseUser, Doctor, Patient
 
 # Create your views here.
 def landing(request):
@@ -30,4 +31,27 @@ def patient_signup(request):
     return render(request, 'registration/patientsignup.html')
 
 def doctor_signup(request):
+    if request.method == "POST":
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        email = request.POST['mail']
+        phonenumber = request.POST['number']
+        password = request.POST['password']
+        gender = request.POST['gender']
+        county = request.POST['county']
+        
+        doctoruser = MyBaseUser(
+            password = password,
+            first_name = firstname,
+            last_name = lastname,
+            email = email,
+            gender = gender,
+            mobile_number = phonenumber,
+            is_doctor = True, 
+            username= firstname + " " +lastname
+            )
+        doctoruser.save()
+        doctor = Doctor(specialties = "Dentist", county = "Nairobi", doctoruser = doctoruser)
+        doctor.save()
+        print("saved")
     return render(request, 'registration/doctorssignup.html')

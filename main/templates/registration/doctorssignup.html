@@ -2,30 +2,31 @@
 {% block title %}Doctor's Sign up page {% endblock %}
 
 {% block content %}
-<form class="patient-form" action="#" method="post" enctype="multipart/form-data">
+<form class="patient-form" method="POST" action="" >
+    {% csrf_token %}
     <div class="input-group first-name">
         <label for="firstname"></label>
-        <input id="firstname" name="firstname" type="text" placeholder="First Name">
+        <input id="firstname" name="firstname" type="text" placeholder="First Name" required>
     </div>
     <div class="input-group last-name">
         <label for="lastname"></label>
-        <input id="lastname" name="lastname" type="text" placeholder="Last Name">
+        <input id="lastname" name="lastname" type="text" placeholder="Last Name" required>
     </div>
     <div class="input-group">
         <label for="mail"></label>
-        <input type="email" name="mail" placeholder="Email">
+        <input type="email" name="mail" placeholder="Email" required>
     </div>
     <div class="input-group">
         <label for="number"></label>
-        <input type="tel" name="number" placeholder="Phone Number">
+        <input type="tel" name="number" placeholder="Phone Number"required>
     </div>
     <div class="input-group">
         <label for="text"></label>
-        <input type="text" name="number" placeholder="Speciality">
+        <input type="text" name="number" placeholder="Speciality" required>
     </div>
     <div class="input-group">
         <label for="gender"></label>
-            <select id="gender" name="gender" >
+            <select id="gender" name="gender" required >
                 <option value="" disabled selected hidden>Choose Gender...</option>
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
@@ -33,7 +34,7 @@
     </div>
     <div class="input-group">
         <label for="county"></label>
-        <select id="county" name="county" >
+        <select id="county" name="county" required>
             <option value="" disabled selected hidden>Choose your county...</option>
             <option value="Mombasa">Mombasa</option>
             <option value="Nairobi">Nairobi</option>
@@ -41,11 +42,11 @@
     </div>
     <div class="input-group password">
         <label for="password"></label>
-        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password" required>
     </div>
     <div class="input-group confirm-password">
         <label for="passconfirm"></label>
-        <input type="password" name="passconfirm" placeholder="Confirm password">
+        <input type="password" name="passconfirm" placeholder="Confirm password" required>
     </div>
     <button>
         Sign up
