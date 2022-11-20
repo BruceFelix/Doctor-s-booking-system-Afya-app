@@ -2,7 +2,7 @@
 {% block title %}Doctor's Sign up page {% endblock %}
 
 {% block content %}
-<form class="patient-form" method="POST" action="" >
+<form class="patient-form" method="POST" action="" onSubmit = "return checkPassword(this)" >
     {% csrf_token %}
     <div class="input-group first-name">
         <label for="firstname"></label>
@@ -21,8 +21,22 @@
         <input type="tel" name="number" placeholder="Phone Number"required>
     </div>
     <div class="input-group">
-        <label for="text"></label>
-        <input type="text" name="number" placeholder="Speciality" required>
+        <label for="speciality"></label>
+            <select id="speciality" name="speciality" required >
+                <option value="" disabled selected hidden>Speciality...</option>
+                <option value="Dermatologists">Dermatologists</option>
+                <option value="Cardiologists">Cardiologists</option>
+                <option value="Gastroenterologist">Gastroenterologist</option>
+                <option value="Physiotherapist">Physiotherapist</option>
+                <option value="Pharmacist">Pharmacist</option>
+                <option value="Orthopaedist">Orthopaedist</option>
+                <option value="Nephrologist">Nephrologist</option>
+                <option value="Neurologist">Neurologist</option>
+                <option value="Rectal Surgeons">Rectal Surgeons</option>
+                <option value="Anesthesiologists">Anesthesiologists</option>
+                <option value="Allergists/Immunologists">Allergists/Immunologists</option>
+                <option value="Emergency Medicine Specialists">Emergency Medicine Specialists</option>
+            </select>
     </div>
     <div class="input-group">
         <label for="gender"></label>

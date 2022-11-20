@@ -8,10 +8,10 @@ class MyBaseUser(AbstractUser):
         ('M', 'Male'),
         ('F', 'Female'),
     ]
-    password = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=128)
     mobile_number = models.CharField(max_length=10)
+    password = models.CharField(max_length=200, null=True)
     is_patient = models.BooleanField(default=False)
     is_doctor = models.BooleanField(default=False)
 
@@ -36,7 +36,7 @@ class Doctor(MyBaseUser):
         ('Mombasa','Mombasa' ),
         ('Nairobi', 'Nairobi')
     ]
-    specialties = models.CharField(max_length=255, choices=SPECIALITIES, null=True, blank=True)
+    specialities = models.CharField(max_length=255, choices=SPECIALITIES, null=True, blank=True)
     county = models.CharField(max_length=255, choices=COUNTIES, null=True)
     doctoruser = models.OneToOneField(MyBaseUser, on_delete = models.CASCADE, primary_key= True, related_name="Doctor")
     is_verified = models.BooleanField(default=False)
