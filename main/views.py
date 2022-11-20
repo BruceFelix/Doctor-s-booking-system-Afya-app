@@ -28,6 +28,29 @@ def signup(request):
     return render(request, 'registration/signup.html', )
 
 def patient_signup(request):
+    if request.method == "POST":
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        email = request.POST['mail']
+        phonenumber = request.POST['number']
+        age = request.POST['age']
+        gender = request.POST['gender']
+        password = request.POST['password']  
+
+        newpatient = MyBaseUser(
+            first_name = firstname,
+            last_name = lastname,
+            email = email,
+            gender = gender,
+            mobile_number = phonenumber,
+            is_patient = True, 
+            username= firstname + " " +lastname,
+            password = password,
+            )
+        newpatient.save()
+        patient = Patient(age = age, patientuser = newpatient)
+        patient.save()
+        
     return render(request, 'registration/patientsignup.html')
 
 def doctor_signup(request):
@@ -36,22 +59,22 @@ def doctor_signup(request):
         lastname = request.POST['lastname']
         email = request.POST['mail']
         phonenumber = request.POST['number']
-        password = request.POST['password']
+        speciality = request.POST['speciality']
         gender = request.POST['gender']
         county = request.POST['county']
-        
-        doctoruser = MyBaseUser(
-            password = password,
+        password = request.POST['password']  
+
+        newdoctor = MyBaseUser(
             first_name = firstname,
             last_name = lastname,
             email = email,
             gender = gender,
             mobile_number = phonenumber,
             is_doctor = True, 
-            username= firstname + " " +lastname
+            username= firstname + " " +lastname,
+            password = password,
             )
-        doctoruser.save()
-        doctor = Doctor(specialties = "Dentist", county = "Nairobi", doctoruser = doctoruser)
+        newdoctor.save()
+        doctor = Doctor(specialities = speciality, county = county, doctoruser = newdoctor)
         doctor.save()
-        print("saved")
     return render(request, 'registration/doctorssignup.html')
