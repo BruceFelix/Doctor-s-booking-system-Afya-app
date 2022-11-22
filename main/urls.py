@@ -7,6 +7,7 @@ urlpatterns = [
     path('registerDoctor/', views.doctor_signup_page, name="doc-register"),
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
+    path('signup/', views.signup, name="signup"),
     path('', views.landing, name='landing'),
     path('account/', views.PatientAccountSettings, name="account")
     # path('landing', views.landing, name='landing'),
