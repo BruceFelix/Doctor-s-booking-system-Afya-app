@@ -14,6 +14,9 @@ from django.contrib.auth.models import Group
 def landing(request):
     return render(request, 'main/landing.html')
 
+def signup(request):
+    return render(request, 'registration/signup.html')
+
 
 def doctor(request):
     return render(request, 'main/doctors.html')
@@ -55,7 +58,7 @@ def patientRegisterPage(request):
         return redirect('login')
     context = {'userForm': userForm, 'patientForm': patientForm}
 
-    return render(request, 'registration/sign_up.html', context)
+    return render(request, 'registration/patientsingup.html', context)
 
 
 def doctor_signup_page(request):

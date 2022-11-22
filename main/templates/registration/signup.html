@@ -12,17 +12,17 @@
 <body>
     <header>
         <div class="name">
-            <a href="landing/">Medic Booking System</a>
+            <a href="#">Medic Booking System</a>
         </div>
         <div class="login">
-            <a href="login.html">Log in</a>
+            <a href="{% url 'login' %}">Log in</a>
         </div>
     </header>
     <main>
         <h2>Sign up for a free account</h2>
         <div class="users">
-            <a href="studentsignup.html"><button>I'm a Patient</button></a>
-            <a href="doctorsignup.html"><button>I'm a Doctor</button></a>
+            <a href="{% url 'pat-register' %}"><button>I'm a Patient</button></a>
+            <a href="{% url 'doc-register' %}"><button>I'm a Doctor</button></a>
         </div>
         <h4>Select the type of account you want to create</h4>
 

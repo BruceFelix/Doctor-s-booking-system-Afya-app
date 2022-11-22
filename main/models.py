@@ -9,8 +9,7 @@ class Patient(models.Model):
         ('M', 'Male'),
         ('F', 'Female'),
     )
-    user = models.OneToOneField(
-        User, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     gender = models.CharField(choices=GENDER_CHOICES, null=True, max_length=128)
     mobile_number = models.CharField(max_length=10)
     age = models.IntegerField()
