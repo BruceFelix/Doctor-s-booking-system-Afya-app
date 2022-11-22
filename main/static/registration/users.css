@@ -52,7 +52,7 @@
     border: 0.125rem solid var(--primary-color);
 }
 
-.patient-form button {
+.register {
     cursor: pointer;
     width: 100%;
     padding: .6rem 0;
