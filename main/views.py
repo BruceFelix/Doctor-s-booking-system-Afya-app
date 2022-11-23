@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . forms import PatientUserForm, PatientForm, DoctorUserForm, DoctorForm, AdminSigupForm
+from . forms import *
 from django.contrib.auth import login, logout, authenticate
 from .models import Doctor, Patient
 from django.contrib import messages
@@ -10,18 +10,25 @@ from django.contrib.auth.models import Group
 
 # Create your views here.
 
-
+@login_required(login_url='login')
 def landing(request):
     return render(request, 'main/landing.html')
 
 def signup(request):
     return render(request, 'registration/signup.html')
 
-
+@login_required(login_url='login')
 def doctor(request):
-    return render(request, 'main/doctors.html')
+    form = DoctorScheduleForm()
+    if request.Method == 'POST':
+        form = DoctorScheduleForm(request.POST)
+        if form.is_valid():
+            schedule = form.cleaned_data.get('schedule')
+            shedules = Schedule(schedule=schedule)
 
+    return render(request, 'main/doctors.html',{'form':form})
 
+@login_required(login_url='login')
 def patient(request):
     return render(request, 'main/patients.html')
 
@@ -67,7 +74,7 @@ def doctor_signup_page(request):
 
     if request.method == 'POST':
         userForm = DoctorUserForm(request.POST)
-        doctorForm = DoctorForm(request.POST, request.FILES)
+        doctorForm = DoctorForm(request.POST)
         if userForm.is_valid() and doctorForm.is_valid():
             user = userForm.save()
             user.set_password(user.password)
@@ -97,11 +104,14 @@ def loginPage(request):
 
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user is not None and is_patient(user):
             login(request, user)
             return redirect('landing')
+        elif user is not None and is_doctor(user):
+            login(request, user,)
+            return redirect('doctor')
         else:
-            messages.info(request, 'Username OR password is incorrect')
+            messages.info(request, 'Username or password is incorrect')
 
     context = {}
     return render(request, 'registration/login.html', context)

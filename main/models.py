@@ -49,24 +49,37 @@ class Doctor(models.Model):
         ('Mombasa', 'Mombasa'),
         ('Nairobi', 'Nairobi')
     )
-
-    user = models.OneToOneField(
-        User, null=True, blank=True, on_delete=models.CASCADE)
-    
+    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     gender = models.CharField(choices=GENDER_CHOICES, null=True, max_length=128)
     mobile_number = models.CharField(max_length=10, null=True)
-    specialities = models.CharField(
-        max_length=255, choices=SPECIALITIES, null=True, blank=True)
+    specialities = models.CharField(max_length=255, choices=SPECIALITIES, null=True, blank=True)
     county = models.CharField(max_length=255, choices=COUNTIES, null=True)
     is_verified = models.BooleanField(default=False)
-
     @property
     def get_name(self):
         return self.user.first_name+" "+self.user.last_name
     @property
     def get_id(self):
         return self.user.id
-
     def __str__(self):
         return self.user.first_name
 
+class Appointment(models.Model):
+    scheduled_time = models.DateField()
+    # patient = models.OneToOneField(d)
+    # doctor = models.OneToOneField()
+    
+class Schedule(models.Model):
+    DAYS_OF_THE_WEEK = [
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+    ]
+    schedule = models.CharField(max_length=255, choices=DAYS_OF_THE_WEEK, null=True)
+    doctor = models.OneToOneField(Doctor, null=True, on_delete=models.CASCADE)
+    pass
+
+    def __str__(self):
+        return f'Schedule for {self.doctor.user.username}'

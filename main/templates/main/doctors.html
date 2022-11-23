@@ -1,23 +1,18 @@
 {% extends 'main/base.html' %}
 {% block title %}Doctors home page {% endblock %}
+{% load widget_tweaks %}
 
 {% block content %}
 <main class="doct">
     <div class="schedule">
         <h3>Create schedule</h3>
-        <form action="">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="input-group">
                 <h4>Select the days you'll be available</h4>
-                <input type="checkbox" id="monday" name="monday" value="Monday">
-                <label for="monday">Monday</label><br>
-                <input type="checkbox" id="tueday" name="tuesday" value="Tuesday">
-                <label for="tueday">Tuesday</label><br>
-                <input type="checkbox" id="wednesday" name="wednesday" value="Wednesday">
-                <label for="wednesday">Wednesday</label><br>
-                <input type="checkbox" id="thursday" name="thursday" value="thursday">
-                <label for="Thursday">Thursday</label><br>    
-                <input type="checkbox" id="friday" name="friday" value="friday">
-                <label for="friday">Friday</label><br>
+                <div class="form-group">
+                    {% render_field  doctoruserform.schedule class="form-control" placeholder="Available days" %}
+                </div>
             </div>
             <div class="actions">
                 <div class="submit">
@@ -29,6 +24,7 @@
                     <input type="reset" id="cance" name="cancel" value="Cancel">
                 </div>
             </div>
+            {{form.errors}}
         </form>
     </div>
     <div class="appointment">
