@@ -20,8 +20,9 @@ class DoctorForm(ModelForm):
 
 class DoctorScheduleForm(ModelForm):
     class Meta:
-        model = Doctor
+        model = Schedule
         fields = "__all__"
+        exclude = ['doctor']
         
 class DoctorUserForm(ModelForm):
     class Meta:

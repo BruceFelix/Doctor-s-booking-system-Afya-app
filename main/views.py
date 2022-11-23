@@ -20,11 +20,12 @@ def signup(request):
 @login_required(login_url='login')
 def doctor(request):
     form = DoctorScheduleForm()
-    if request.Method == 'POST':
+    if request.method == 'POST':
         form = DoctorScheduleForm(request.POST)
         if form.is_valid():
-            schedule = form.cleaned_data.get('schedule')
-            shedules = Schedule(schedule=schedule)
+            schedule = form.save()
+            schedule.save()
+        return redirect('doctor')
 
     return render(request, 'main/doctors.html',{'form':form})
 
