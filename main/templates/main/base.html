@@ -13,16 +13,15 @@
     <title>{% block title %}Medic{% endblock %}</title>  
 </head>
 <body>
-    <header>
+    <header style="align-items: center;">
             <div class="name">
                 <h1> Medic</h1>
                 <h2> Booking </br> Platform</h2>
             </div>
-            <!-- <div class="link">
-                <ul>
-                    <li><a href="">Register</a></li>
-                </ul>
-            </div> -->
+            <div class="logged-in-user" style="color: white; display: flex; ">
+                <p>Logged in as {{ user.username }}</p>
+                <a href="{% url 'logout' %}" style="margin: 0 20px; cursor: pointer;">Logout</a>
+            </div>
     </header>
     <div>
         {% block content %}

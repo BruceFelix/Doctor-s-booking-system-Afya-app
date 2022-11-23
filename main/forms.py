@@ -18,6 +18,11 @@ class DoctorForm(ModelForm):
         fields = "__all__"
         exclude = ['user', 'is_verified']
 
+class DoctorScheduleForm(ModelForm):
+    class Meta:
+        model = Doctor
+        fields = "__all__"
+        
 class DoctorUserForm(ModelForm):
     class Meta:
         model=User

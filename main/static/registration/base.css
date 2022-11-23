@@ -26,6 +26,7 @@ header{
     justify-content: space-around;
     height: max-content;
     padding: 10px;
+    align-items: center;
 
 }
 .name h1{
