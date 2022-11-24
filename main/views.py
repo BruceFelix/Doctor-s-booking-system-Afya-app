@@ -4,9 +4,10 @@ from django.contrib.auth import login, logout, authenticate
 from .models import Doctor, Patient
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .decorators import unauthenticated_user, allowed_users, admin_only
+from .decorators import unauthenticated_user, allowed_users, admin_only, redirectUser
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+from django.shortcuts import HttpResponse
 
 # Create your views here.
 
@@ -17,18 +18,29 @@ def landing(request):
 def signup(request):
     return render(request, 'registration/signup.html')
 
+@redirectUser
 @login_required(login_url='login')
 def doctor(request):
+    # print(request.user.groups.all())
+    # if request.user.username == 'admin':
+    #     return redirect("/admin")
+    if Doctor.objects.filter(user = request.user).exists():
+        dock = Doctor.objects.get(user = request.user)
+    else:
+        return HttpResponse("No such Docker Found")
     form = DoctorScheduleForm()
     if request.method == 'POST':
         form = DoctorScheduleForm(request.POST)
         if form.is_valid():
+            if Schedule.objects.filter(doctor =dock).exists():
+               Schedule.objects.get(doctor=dock).delete()
+               print("Overwriing the docker object") 
             monday = form.cleaned_data.get('monday')
             tuesday = form.cleaned_data.get('tuesday')
             wednesday = form.cleaned_data.get('wednesday')
             thursday = form.cleaned_data.get('thursday')
             friday = form.cleaned_data.get('friday')
-            schedule = Schedule(monday=monday,tuesday=tuesday,thursday=thursday,wednesday=wednesday,friday=friday)
+            schedule = Schedule(monday=monday,tuesday=tuesday,thursday=thursday,wednesday=wednesday,friday=friday, doctor=dock)
             schedule.save()
         return redirect('doctor')
 
@@ -36,7 +48,34 @@ def doctor(request):
 
 @login_required(login_url='login')
 def patient(request):
-    return render(request, 'main/patients.html')
+    res = Schedule.objects.all()
+    final_res ={}
+    for sche  in res:
+        days = []
+        if sche.monday == "Available":
+            days.append("monday")
+        if sche.tuesday == "Available":
+            days.append("tuesday")
+        if sche.wednesday == "Available":
+            days.append("wednesday")
+        if sche.thursday == "Available":
+            days.append("Thursday")
+        if sche.friday == "Available":
+            days.append("friday")
+        # print(f"Doctor {sche.doctor.user.username} {days}")
+        specility = sche.doctor.specialities
+        county = sche.doctor.county
+        final_res[sche.doctor.user.username] ={
+            "specility":specility,
+            "days": days,
+            "county":county,
+            "name":"Dr. " + sche.doctor.user.username
+        }
+    #understand event listeners and AJAX
+    print(final_res)
+
+    return render(request, 'main/patients.html',{final_res:final_res})
+
 
 def adminRegisterPage(request):
     form = AdminSigupForm()
@@ -114,8 +153,11 @@ def loginPage(request):
             login(request, user)
             return redirect('landing')
         elif user is not None and is_doctor(user):
-            login(request, user,)
-            return redirect('doctor')
+            if  user.doctor.is_verified:
+                login(request, user,)
+                return redirect('doctor')
+            else:
+                messages.warning(request, "Docto    r Not Veriefied")
         else:
             messages.info(request, 'Username or password is incorrect')
 

@@ -29,6 +29,24 @@ def allowed_users(allowed_roles=[]):
     return decorator
 
 
+def redirectUser(view_func):
+    def wrapper_function(request, *args, **kwargs):
+        group = None
+        if request.user.groups.exists():
+            group = request.user.groups.all()[0].name
+        else:
+            return redirect("/admin")
+
+
+        if group == 'patient':
+            return redirect('user-page')
+        else:  
+            return view_func(request, *args, **kwargs)
+
+    return wrapper_function
+
+
+
 def admin_only(view_func):
     def wrapper_function(request, *args, **kwargs):
         group = None
@@ -40,5 +58,6 @@ def admin_only(view_func):
 
         if group == 'admin':
             return view_func(request, *args, **kwargs)
-
+        
+        # return redirect("/admin")
     return wrapper_function
