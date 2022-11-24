@@ -49,7 +49,7 @@ class Doctor(models.Model):
         ('Mombasa', 'Mombasa'),
         ('Nairobi', 'Nairobi')
     )
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=False, blank=True, on_delete=models.CASCADE)
     gender = models.CharField(choices=GENDER_CHOICES, null=True, max_length=128)
     mobile_number = models.CharField(max_length=10, null=True)
     specialities = models.CharField(max_length=255, choices=SPECIALITIES, null=True, blank=True)
@@ -65,8 +65,14 @@ class Doctor(models.Model):
         return self.user.first_name
 
 class Appointment(models.Model):
-    scheduled_time = models.DateField()
-    patient = models.OneToOneField(Patient,null=True )
+    day = models.CharField(max_length=255, null=True)
+    patient = models.OneToOneField(Patient,null=False, on_delete=models.CASCADE)
+    doctor = models.OneToOneField(Doctor,on_delete=models.CASCADE, null=False)
+    is_accept = models.BooleanField(default=False)
+    is_reject = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.doctor} Appointed by {self.patient} on {self.day}"
     
 class Schedule(models.Model):
     AVAILABILITY_CHOICES = [
@@ -74,13 +80,12 @@ class Schedule(models.Model):
         ('Unavailable', 'Unavailable'),
     ]
 
-    doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE,null=True)
+    doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE,null=False)
     monday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
     tuesday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
     wednesday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
     thursday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
     friday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
-    print(doctor)
 
     def __str__(self):
-        return f'Schedule for {self.monday}'
+        return f'Schedule for {self.doctor}'
