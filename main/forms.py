@@ -19,10 +19,20 @@ class DoctorForm(ModelForm):
         exclude = ['user', 'is_verified']
 
 class DoctorScheduleForm(ModelForm):
+    STATUS_CHOICE = [
+        ('Available', 'Available'),
+        ('Unavailable', 'Unavailable'),
+    ]
+
+    monday = forms.CharField(label='Monday', widget=forms.Select(choices=STATUS_CHOICE), required=True)
+    tuesday = forms.CharField(label='Tuesday', widget=forms.Select(choices=STATUS_CHOICE), required=True)
+    wednesday = forms.CharField(label='Wednesday', widget=forms.Select(choices=STATUS_CHOICE), required=True)
+    thursday = forms.CharField(label='Thursday', widget=forms.Select(choices=STATUS_CHOICE), required=True)
+    friday = forms.CharField(label='Friday', widget=forms.Select(choices=STATUS_CHOICE), required=True)
+
     class Meta:
         model = Schedule
-        fields = "__all__"
-        exclude = ['doctor']
+        fields = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
         
 class DoctorUserForm(ModelForm):
     class Meta:
