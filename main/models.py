@@ -66,20 +66,21 @@ class Doctor(models.Model):
 
 class Appointment(models.Model):
     scheduled_time = models.DateField()
-    # patient = models.OneToOneField(d)
-    # doctor = models.OneToOneField()
+    patient = models.OneToOneField(Patient,null=True )
     
 class Schedule(models.Model):
-    DAYS_OF_THE_WEEK = [
-        ('Monday', 'Monday'),
-        ('Tuesday', 'Tuesday'),
-        ('Wednesday', 'Wednesday'),
-        ('Thursday', 'Thursday'),
-        ('Friday', 'Friday'),
+    AVAILABILITY_CHOICES = [
+        ('Available', 'Available'),
+        ('Unavailable', 'Unavailable'),
     ]
-    schedule = models.CharField(max_length=255, choices=DAYS_OF_THE_WEEK, null=True)
-    doctor = models.OneToOneField(Doctor, null=True, on_delete=models.CASCADE)
-    pass
+
+    doctor = models.OneToOneField(Doctor, on_delete=models.CASCADE,null=True)
+    monday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
+    tuesday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
+    wednesday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
+    thursday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
+    friday = models.CharField(max_length=255, choices=AVAILABILITY_CHOICES,null=True)
+    print(doctor)
 
     def __str__(self):
-        return f'Schedule for {self.doctor.user.username}'
+        return f'Schedule for {self.monday}'
