@@ -48,33 +48,33 @@ def doctor(request):
 
 @login_required(login_url='login')
 def patient(request):
-    res = Schedule.objects.all()
+    schedules = Schedule.objects.all()
     final_res ={}
-    for sche  in res:
+    for schedule  in schedules:
         days = []
-        if sche.monday == "Available":
-            days.append("monday")
-        if sche.tuesday == "Available":
-            days.append("tuesday")
-        if sche.wednesday == "Available":
+        if schedule.monday == "Available":
+            days.append("Monday")
+        if schedule.tuesday == "Available":
+            days.append("Tuesday")
+        if schedule.wednesday == "Available":
             days.append("wednesday")
-        if sche.thursday == "Available":
+        if schedule.thursday == "Available":
             days.append("Thursday")
-        if sche.friday == "Available":
-            days.append("friday")
-        # print(f"Doctor {sche.doctor.user.username} {days}")
-        specility = sche.doctor.specialities
-        county = sche.doctor.county
-        final_res[sche.doctor.user.username] ={
+        if schedule.friday == "Available":
+            days.append("Friday")
+        print(f"Doctor {schedule.doctor.user.username} {days}")
+        specility = schedule.doctor.specialities
+        county = schedule.doctor.county
+        final_res[schedule.doctor.user.username] ={
             "specility":specility,
             "days": days,
             "county":county,
-            "name":"Dr. " + sche.doctor.user.username
+            "name":"Dr. " + schedule.doctor.user.username
         }
     #understand event listeners and AJAX
     print(final_res)
 
-    return render(request, 'main/patients.html',{final_res:final_res})
+    return render(request, 'main/patients.html',{'final_res' :final_res})
 
 
 def adminRegisterPage(request):
