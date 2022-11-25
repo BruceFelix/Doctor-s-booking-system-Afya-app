@@ -10,8 +10,8 @@
                 <h4>Book an appointment</h4>
                 <div class="input-group">
                     <label for="county"></label>
-                        <select id="county" name="county" >
-                            <option value="" disabled selected hidden>Choose your county.</option>
+                        <select id="counties" name="county" >
+                            <!-- <option value="" disabled selected hidden>Choose your county.</option> -->
                             <option value="Mombasa">Mombasa</option>
                             <option value="Nairobi">Nairobi</option>
                         </select>
@@ -20,37 +20,51 @@
                     <label for="speciality"></label>
                         <select id="speciality" name="speciality" >
                             <option value="" disabled selected hidden>Choose the type of doctor you need.</option>
-                            <option value="Optimerist">Optimerist</option>
-                            <option value="Dentist">Dentist</option>
-                            <option value="Dermatologist">Dermatologist</option>
-                            <option value="Podiatrist">Podiatrist</option>
-                            <option value="Practitioner">General Practitioner</option>
-                            <option value="Pediatrician">Pediatrician</option>
-                            <option value="Endocrinologist">Endocrinologist</option>
-                            <option value="Neurologist">Neurologist</option>
-                            <option value="Psychiatrist">Psychiatrist</option>
+                            {% for speciality in specialities %}
+                                <option value={{speciality}}>{{speciality}}</option>
+                            {% endfor %}
                         </select>
                 </div>
                 <div class="input-group">
                     <label for="doctor"></label>
                         <select id="doctor" name="doctor" >
                             <option value="" disabled selected hidden>Choose Doctor.</option>
-                            <option value="Albert">Dr. Albert Kahira</option>
-                            <option value="Nderu">Dr. Lawerence Nderu</option>
-                            <option value="Gameli">Dr. Bright Gameli</option>
-                            <option value="Carson">Dr. Ben Carson</option>
-                            <option value="Chao">Dr. Chao Mbogo</option>
                         </select>
+                <script>
+                    let specialities = document.getElementById('speciality')
+                    let counties = document.getElementById('counties')
+                    let doctors = JSON.parse("{{ final_res|escapejs }}")
+                    let doctorKeys = Object.keys(doctors)
+                    let onCallDoctors = document.getElementById('doctor')
+                    let day = document.getElementById('days')
+
+                    
+                    specialities.addEventListener("change",function handleChange(event){
+                            $('#doctor').empty().append('<option value="" disabled selected hidden>Choose the type of doctor you need.</option>')
+
+                            doctorKeys.forEach(element => {
+                            let countyDoctors = []
+                            let availableDoctors = doctors[element]
+                            if(availableDoctors['speciality'] == specialities.value && availableDoctors['county'] == counties.value){
+                                countyDoctors.push(element)
+                                var options = document.createElement("option")
+                                options.text = "Dr. " +element
+                                onCallDoctors.add(options,onCallDoctors[0])
+                        }
+                        console.log(countyDoctors)
+
+                    });                        
+                    })
+                    day.addEventListener('change', function daysAvailable(event){
+                        $('#days').empty().append('<option value="" disabled selected hidden>Choose a day.</option>')
+                        
+                    })
+                </script>        
                 </div>
                 <div class="input-group">
                     <label for="days"></label>
                         <select id="days" name="days" >
                             <option value="" disabled selected hidden>Choose a day.</option>
-                            <option value="Monday">Monday</option>
-                            <option value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
                         </select>
                 </div>
             </div>
@@ -68,13 +82,8 @@
     </div>
 </main>
 <script>
-    const ajaxObject = XMLHttpRequest()
-    xhttp.onload = function() {
-  // What to do when the response is ready
-}
-
-// Send a request
-xhttp.open("GET", "ajax_info.txt");
-xhttp.send();
+    
+// let doctors = JSON.parse("{{ final_res|escapejs }}")
+// console.log(doctors)
 </script>
 {% endblock %}
