@@ -50,6 +50,7 @@ def doctor(request):
 def patient(request):
     schedules = Schedule.objects.all()
     final_res ={}
+    specilities = []
     for schedule  in schedules:
         days = []
         if schedule.monday == "Available":
@@ -63,18 +64,24 @@ def patient(request):
         if schedule.friday == "Available":
             days.append("Friday")
         print(f"Doctor {schedule.doctor.user.username} {days}")
-        specility = schedule.doctor.specialities
+        speciality = schedule.doctor.specialities
         county = schedule.doctor.county
+
+        if speciality not in specilities:    
+            specilities.append(speciality)
+
+        
         final_res[schedule.doctor.user.username] ={
-            "specility":specility,
+            "speciality":speciality,
             "days": days,
             "county":county,
             "name":"Dr. " + schedule.doctor.user.username
         }
-    #understand event listeners and AJAX
     print(final_res)
-
-    return render(request, 'main/patients.html',{'final_res' :final_res})
+    import json
+    final_res = json.dumps(final_res)  
+      
+    return render(request, 'main/patients.html',{'final_res' :final_res, 'specialities': specilities})
 
 
 def adminRegisterPage(request):
