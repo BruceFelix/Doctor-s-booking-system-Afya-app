@@ -29,37 +29,7 @@
                     <label for="doctor"></label>
                         <select id="doctor" name="doctor" >
                             <option value="" disabled selected hidden>Choose Doctor.</option>
-                        </select>
-                <script>
-                    let specialities = document.getElementById('speciality')
-                    let counties = document.getElementById('counties')
-                    let doctors = JSON.parse("{{ final_res|escapejs }}")
-                    let doctorKeys = Object.keys(doctors)
-                    let onCallDoctors = document.getElementById('doctor')
-                    let day = document.getElementById('days')
-
-                    
-                    specialities.addEventListener("change",function handleChange(event){
-                            $('#doctor').empty().append('<option value="" disabled selected hidden>Choose the type of doctor you need.</option>')
-
-                            doctorKeys.forEach(element => {
-                            let countyDoctors = []
-                            let availableDoctors = doctors[element]
-                            if(availableDoctors['speciality'] == specialities.value && availableDoctors['county'] == counties.value){
-                                countyDoctors.push(element)
-                                var options = document.createElement("option")
-                                options.text = "Dr. " +element
-                                onCallDoctors.add(options,onCallDoctors[0])
-                        }
-                        console.log(countyDoctors)
-
-                    });                        
-                    })
-                    day.addEventListener('change', function daysAvailable(event){
-                        $('#days').empty().append('<option value="" disabled selected hidden>Choose a day.</option>')
-                        
-                    })
-                </script>        
+                        </select>       
                 </div>
                 <div class="input-group">
                     <label for="days"></label>
@@ -67,6 +37,49 @@
                             <option value="" disabled selected hidden>Choose a day.</option>
                         </select>
                 </div>
+                <script>
+                    let specialities = document.getElementById('speciality')
+                    let counties = document.getElementById('counties')
+                    let doctors = JSON.parse("{{ final_res|escapejs }}")
+                    let doctorKeys = Object.keys(doctors)
+                    let onCallDoctors = document.getElementById('doctor')
+                    let daysAvailable = document.getElementById('days')
+
+                    specialities.addEventListener("change",function handleChange(event){
+                            $('#doctor').empty().append('<option value="" disabled selected hidden>Choose the type of doctor you need.</option>')
+                            doctorKeys.forEach(element => {
+                            let availableDoctors = doctors[element]
+                            if(availableDoctors['speciality'] == specialities.value && availableDoctors['county'] == counties.value){
+                                let dayOfTheWeek = []
+                                let options = document.createElement("option")
+                                let daysOptions = document.createElement("option")
+                                options.text = "Dr. " +element
+                                $('#days').empty().append('<option value="" disabled selected hidden>Choose a day.</option>')
+                                let availableDays = doctors[element]['days']
+                                for(let i = 0; i < availableDays.length; i++){
+                                    dayOfTheWeek.push(availableDays[i])
+                                }
+                                console.log(dayOfTheWeek)
+                                // for(let i = 0; i < dayOfTheWeek.length; i++){
+                                //     daysOptions.text = availableDays[i]
+                                //     availableDays.add(daysOptions,availableDays[0])
+                                // }
+                                daysOptions.text = dayOfTheWeek
+                                availableDays.add(daysOptions,availableDays[0])
+
+                                console.log(onCallDoctors)
+                                onCallDoctors.add(options,onCallDoctors[0])
+                        }
+
+                    }); 
+                    })
+                    // days.addEventListener("change", function daysAvailable(event){
+                    //     doctorKeys.forEach(element => {
+                    //         let doctorsDays = []
+                    //         let daysavilable = doctorsDays[element]
+                    //     });
+                    // })
+                </script> 
             </div>
             <div class="actions">
                 <div class="submit">
