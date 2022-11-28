@@ -5,7 +5,7 @@
 <main class="main">
     <div class="appointment">
         <h3>Book Appointment</h3>
-        <form action="">
+        <form action="" method="POST">
             <div class="input-group">
                 <h4>Book an appointment</h4>
                 <div class="input-group">
@@ -57,33 +57,19 @@
                     
                     }); 
                     })
-                    days.addEventListener("change", function daysAvailable(event){
+                    onCallDoctors.addEventListener("change", function daysOnCall(event){
                         $('#days').empty().append('<option value="" disabled selected hidden>Choose a day.</option>')
-                        // doctorKeys.forEach(element => {
-                        //     let selectedDoctor = document.getElementById('doctor').value
-                        //     console.log(selectedDoctor)
-                        //     let dayOfTheWeek = []
-                        //     let daysOptions = document.createElement("option")
-                        //     let availableDays = doctors[element]
-                        //     console.log(availableDays)
-                        //     for(let i = 0; i < availableDays.length; i++){
-                        //                 dayOfTheWeek.push(availableDays[i])
-                        //             }
-                        // })
                         doctorKeys.forEach(element => {
                             let availableDoctors = doctors[element]
-                            if(availableDoctors['name'] == onCallDoctors.value && availableDoctors['speciality'] == specialities.value){
-                                let options = document.createElement("option")
-                                options.text = element['days']
-                                daysAvailable.add(options,daysAvailable[0])
-                        }})
-                    
-                        // console.log(dayOfTheWeek)
-                        // for(let i = 0; i < dayOfTheWeek.length; i++){
-                        //     daysOptions.text = dayOfTheWeek[i]
-                        //     availableDays.add(daysOptions,availableDays)
-                        // }
 
+                            if( "Dr. " + element == onCallDoctors.value ){
+                                availableDoctors['days'].forEach(day =>{
+                                    let dayOptions = document.createElement("option")
+                                    dayOptions.text = day
+                                    daysAvailable.add(dayOptions,daysAvailable[0])
+                                })
+                            }                    
+                    }); 
                     })
                 </script> 
             </div>

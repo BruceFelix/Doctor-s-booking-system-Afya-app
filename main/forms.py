@@ -33,7 +33,9 @@ class DoctorScheduleForm(ModelForm):
     class Meta:
         model = Schedule
         fields = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
-        
+
+
+
 class DoctorUserForm(ModelForm):
     class Meta:
         model=User

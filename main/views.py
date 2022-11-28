@@ -27,14 +27,14 @@ def doctor(request):
     if Doctor.objects.filter(user = request.user).exists():
         dock = Doctor.objects.get(user = request.user)
     else:
-        return HttpResponse("No such Docker Found")
+        return HttpResponse("No such Docter Found")
     form = DoctorScheduleForm()
     if request.method == 'POST':
         form = DoctorScheduleForm(request.POST)
         if form.is_valid():
             if Schedule.objects.filter(doctor =dock).exists():
                Schedule.objects.get(doctor=dock).delete()
-               print("Overwriing the docker object") 
+               print("Overwriting the doctor object") 
             monday = form.cleaned_data.get('monday')
             tuesday = form.cleaned_data.get('tuesday')
             wednesday = form.cleaned_data.get('wednesday')
@@ -77,7 +77,9 @@ def patient(request):
             "county":county,
             "name":"Dr. " + schedule.doctor.user.username
         }
-    print(final_res)
+    if request.method == "POST":
+        day = request.days
+    # print(final_res)
     import json
     final_res = json.dumps(final_res)  
       
