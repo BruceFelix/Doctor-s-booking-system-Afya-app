@@ -64,10 +64,10 @@ class Doctor(models.Model):
     def __str__(self):
         return self.user.first_name
 
-class Appointment(models.Model):
+class Appointments(models.Model):
     day = models.CharField(max_length=255, null=True)
-    patient = models.OneToOneField(Patient,null=False, on_delete=models.CASCADE)
-    doctor = models.OneToOneField(Doctor,on_delete=models.CASCADE, null=False)
+    patient = models.ForeignKey(Patient,null=False, on_delete=models.CASCADE,default=True)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE , null=False, default=True)
     is_accept = models.BooleanField(default=False)
     is_reject = models.BooleanField(default=False)
 

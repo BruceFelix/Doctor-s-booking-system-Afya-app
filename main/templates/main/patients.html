@@ -11,7 +11,7 @@
                 <h4>Book an appointment</h4>
                 <div class="input-group">
                     <label for="county"></label>
-                        <select id="counties" name="county" >
+                        <select id="counties" name="county" required >
                             <!-- <option value="" disabled selected hidden>Choose your county.</option> -->
                             <option value="Mombasa">Mombasa</option>
                             <option value="Nairobi">Nairobi</option>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="input-group">
                     <label for="speciality"></label>
-                        <select id="speciality" name="speciality" >
+                        <select id="speciality" name="speciality" required>
                             <option value="" disabled selected hidden>Choose the type of doctor you need.</option>
                             {% for speciality in specialities %}
                                 <option value={{speciality}}>{{speciality}}</option>
@@ -28,13 +28,13 @@
                 </div>
                 <div class="input-group">
                     <label for="doctor"></label>
-                        <select id="doctor" name="doctor" >
+                        <select id="doctor" name="doctor" required >
                             <option value="" disabled selected hidden>Choose Doctor.</option>
                         </select>       
                 </div>
                 <div class="input-group">
                     <label for="days"></label>
-                        <select id="days" name="days" >
+                        <select id="days" name="days" required>
                             <option value="" disabled selected hidden>Choose a day.</option>
                         </select>
                 </div>
