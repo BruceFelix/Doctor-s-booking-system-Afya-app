@@ -6,6 +6,7 @@
     <div class="appointment">
         <h3>Book Appointment</h3>
         <form action="" method="POST">
+            {% csrf_token %}
             <div class="input-group">
                 <h4>Book an appointment</h4>
                 <div class="input-group">

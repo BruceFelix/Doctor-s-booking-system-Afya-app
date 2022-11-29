@@ -78,7 +78,17 @@ def patient(request):
             "name":"Dr. " + schedule.doctor.user.username
         }
     if request.method == "POST":
-        day = request.days
+        day = request.POST['days']
+        # patient = request.POST[Patient.username]
+        doctor = request.POST["Dr. " +schedule.doctor.user.username]
+
+        newAppointment = Appointment(
+            day = day,
+            # patient = patient,
+            doctor = doctor
+        )
+        newAppointment.save()
+        
     # print(final_res)
     import json
     final_res = json.dumps(final_res)  
