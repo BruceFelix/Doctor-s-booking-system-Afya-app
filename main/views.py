@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from . forms import *
 from django.contrib.auth import login, logout, authenticate
-from .models import Doctor, Patient
+from .models import Doctor, Patient, Appointments, Schedule
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_users, admin_only, redirectUser
@@ -77,19 +77,25 @@ def patient(request):
             "county":county,
             "name":"Dr. " + schedule.doctor.user.username
         }
+#    user = request.user.first_name + " " + request.user.last_name
+    # patient = Patient.user.username
+    user = Patient.objects.get(user=request.user)
+    
+    print(user)
     if request.method == "POST":
-        day = request.POST['days']
-        # patient = request.POST[Patient.username]
-        doctor = request.POST["Dr. " +schedule.doctor.user.username]
 
-        newAppointment = Appointment(
+        day = request.POST['days']
+        patient = request.user
+        doctor = request.POST['doctor'].replace("Dr. " , "")
+        savedoctor = Doctor.objects.filter(user=User.objects.filter(username=doctor)[0])
+
+        newAppointment = Appointments(
             day = day,
-            # patient = patient,
-            doctor = doctor
+            patient = user,
+            doctor = savedoctor[0]
         )
         newAppointment.save()
-        
-    # print(final_res)
+
     import json
     final_res = json.dumps(final_res)  
       
