@@ -15,19 +15,35 @@ from django.shortcuts import HttpResponse
 def landing(request):
     return render(request, 'main/landing.html')
 
+
+
+@login_required(login_url='login')
+def doctor(request):
+    return render(request, 'main/doctors.html')
+
+
+@login_required(login_url='login')
+def appointment(request):
+    appointments = Appointments.objects.filter(doctor = request.user.doctor)
+    context = {
+        "appointments" : appointments
+    }
+    return render(request, 'main/appointments.html', context)
+
+# @login_required(login_url='login')
+# def schedule(request):
+#     return render(request, 'main/schedule.html')
+
 def signup(request):
     return render(request, 'registration/signup.html')
 
 @redirectUser
 @login_required(login_url='login')
-def doctor(request):
-    # print(request.user.groups.all())
-    # if request.user.username == 'admin':
-    #     return redirect("/admin")
+def schedule(request):
     if Doctor.objects.filter(user = request.user).exists():
         dock = Doctor.objects.get(user = request.user)
     else:
-        return HttpResponse("No such Docter Found")
+        return HttpResponse("No such Doctor Found")
     form = DoctorScheduleForm()
     if request.method == 'POST':
         form = DoctorScheduleForm(request.POST)
@@ -42,9 +58,10 @@ def doctor(request):
             friday = form.cleaned_data.get('friday')
             schedule = Schedule(monday=monday,tuesday=tuesday,thursday=thursday,wednesday=wednesday,friday=friday, doctor=dock)
             schedule.save()
+            messages.success(request, "Success: Schedule created.")
         return redirect('doctor')
 
-    return render(request, 'main/doctors.html',{'form':form})
+    return render(request, 'main/schedule.html',{'form':form})
 
 @login_required(login_url='login')
 def patient(request):
@@ -182,7 +199,7 @@ def loginPage(request):
                 login(request, user,)
                 return redirect('doctor')
             else:
-                messages.warning(request, "Docto    r Not Veriefied")
+                messages.warning(request, "Doctor Not Veriefied")
         else:
             messages.info(request, 'Username or password is incorrect')
 

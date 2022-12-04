@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% block title %}Doctors home page {% endblock %}
+{% load widget_tweaks %}
+
+{% block content %}
+<main class="appointments"
+style="display: flex ;
+flex-direction: column;
+align-items: center;"
+>
+    <div class="appointment">
+        <h4>Booked Appointments</h4>
+        <table border="1">
+            <tr>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Day</th>
+                <th>Accept</th>
+                <th>Reject</th>
+            </tr>
+            <tr>
+                {% for person in appointments %}
+                <td>{{person.patient}}</td>
+                <td>{{person.doctor}}</td>
+                <td>{{person.day}}</td>
+                <td class="action one"> <a href="#">Accept</a></td>
+                <td class="action twstarto"> <a href="#">Reject</a></td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <a
+    style="
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color:  #02132e;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 1.3rem;
+    "
+    href="{% url 'doctor' %}"> Back </a>
+</main>
+{% endblock %}

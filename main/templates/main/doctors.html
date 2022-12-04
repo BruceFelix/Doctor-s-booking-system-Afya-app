@@ -3,82 +3,48 @@
 {% load widget_tweaks %}
 
 {% block content %}
-<main class="doct">
-    <div class="schedule" style="padding: 20px; height:auto;">
-        <h3>Create schedule</h3>
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="input-group">
-                <h4>Select the days you'll be available</h4>
-                <div class="form-group">
-                    {{form}}
-                </div>
-            </div>
-            <div class="actions">
-                <div class="submit">
-                    <label for="submit"></label>
-                    <input type="submit" id="submit" name="submit" value="Submit">
-                </div>
-                <div class="cancel">
-                    <label for="cancel"></label>
-                    <input type="reset" id="cance" name="cancel" value="Cancel">
-                </div>
-            </div>
-            {{form.errors}}
-        </form>
+<main class="doct"
+    style="
+    justify-content: space-around;
+    margin: 150px auto;
+    width: 80%;
+    "
+    >
+    <a style="
+    color: white;
+    background-color: #02132e;
+    width: 30%;
+    height: 200px;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 20px;
+    " href="{% url 'schedule' %}">
+    <div class="block" 
+    style="
+        margin: 80px 0;
+    "
+    >
+    Create schedule
     </div>
-    <div class="appointment">
-        <h4>Booked Appointments</h4>
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Day</th>
-                <th>Accept</th>
-                <th>Reject</th>
-            </tr>
-            <tr>
-                <td>BruceFelix Macharia</td>
-                <td>brucefelixm@gmail.com</td>
-                <td>0792743861</td>
-                <td>Monday</td>
-                <td class="action one"> <a href="#">Accept</a></td>
-                <td class="action two"> <a href="#">Reject</a></td>
-            </tr>
-            <tr>
-                <td>BruceFelix Macharia</td>
-                <td>brucefelixm@gmail.com</td>
-                <td>0792743861</td>
-                <td>Monday</td>
-                <td class="action one "> <a href="#">Accept</a></td>
-                <td class="action two"> <a href="#">Reject</a></td>
-            </tr>
-            <tr>
-                <td>BruceFelix Macharia</td>
-                <td>brucefelixm@gmail.com</td>
-                <td>0792743861</td>
-                <td>Monday</td>
-                <td class="action one "> <a href="#">Accept</a></td>
-                <td class="action two"> <a href="#">Reject</a></td>
-            </tr>
-            <tr>
-                <td>BruceFelix Macharia</td>
-                <td>brucefelixm@gmail.com</td>
-                <td>0792743861</td>
-                <td>Monday</td>
-                <td class="action one"> <a href="#">Accept</a></td>
-                <td class="action two "><a href="#">Reject</a></td>
-            </tr>
-            <tr>
-                <td>BruceFelix Macharia</td>
-                <td>brucefelixm@gmail.com</td>
-                <td>0792743861</td>
-                <td>Monday</td>
-                <td class="action one"> <a href="#">Accept</a></td>
-                <td class="action two"> <a href="#">Reject</a></td>
-            </tr>
-        </table>
+    </a>
+
+    <a style="
+    color: white;
+    background-color: #02132e;
+    width: 30%;
+    height: 200px;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 20px;
+    " href="{% url 'appointment' %}">
+    <div class="block" 
+    style="
+        margin: 80px 0;
+    "
+    >
+    Booked Appointments
     </div>
+    </a>
+
 </main>
 {% endblock %}

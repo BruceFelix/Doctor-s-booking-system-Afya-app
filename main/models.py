@@ -72,7 +72,7 @@ class Appointments(models.Model):
     is_reject = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.doctor} Appointed by {self.patient} on {self.day}"
+        return f"Appointment for Dr.{self.doctor} with {self.patient} on {self.day}"
     
 class Schedule(models.Model):
     AVAILABILITY_CHOICES = [

@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% block title %}Doctors home page {% endblock %}
+{% load widget_tweaks %}
+
+{% block content %}
+<main class="schedules" 
+style="display: flex ;
+flex-direction: column;
+align-items: center;
+height: auto;"
+>
+    <div class="schedule" style="height:auto; padding: 10px 20px;"
+
+    >
+        <h3 style="border-radius: 15px 15px 0 0  ; ">Create schedule</h3>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group">
+                <h4>Select the days you'll be available</h4>
+                <div class="form-group">
+                    {{form}}
+                </div>
+            </div>
+            <div class="actions">
+                <div class="submit">
+                    <label for="submit"></label>
+                    <input type="submit" id="submit" name="submit" value="Submit">
+                </div>
+                <div class="cancel">
+                    <label for="cancel"></label>
+                    <input type="reset" id="cance" name="cancel" value="Cancel">
+                </div>
+            </div>
+            {% for message in messages %}
+            {{ message | safe }}
+            {% endfor %}
+            {{form.errors}}
+        </form>
+    </div>
+    <a
+    style="
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color:  #02132e;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 1.3rem;
+    "
+    href="{% url 'doctor' %}"> Back </a>
+</main>
+{% endblock %}
