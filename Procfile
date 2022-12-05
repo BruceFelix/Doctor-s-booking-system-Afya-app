@@ -1,1 +1,1 @@
-web: gunicorn afyapp.wsgi --log-file -
+web: gunicorn afyaapp.wsgi --log-file -
