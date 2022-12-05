@@ -1,0 +1,1 @@
+web: gunicorn afyapp.wsgi --log-file -
