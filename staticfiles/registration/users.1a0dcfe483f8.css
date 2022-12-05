@@ -1,0 +1,56 @@
+:root {
+    --primary-color: #0d1d32;
+    --secondary-color: #02132e;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #efefef;
+    --gray-2: #757575;
+}
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.patient-form {
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 1.5rem;
+    width:60%;
+    margin: 10px auto 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin: .1rem 0;
+}
+
+
+.input-group input,select {
+    width: 100%;
+    padding: .6rem 2rem;
+    font-size: .8rem;
+    background-color: var(--gray);
+    border-radius: .5rem;
+    border: 0.125rem solid var(--white);
+    outline: none;
+}
+
+.input-group input:focus {
+    border: 0.125rem solid var(--primary-color);
+}
+
+.submit {
+    cursor: pointer;
+    width: 100%;
+    padding: .6rem 0;
+    border-radius: .5rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-size: 1.2rem;
+    outline: none;
+}

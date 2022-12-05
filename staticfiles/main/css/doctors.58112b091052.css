@@ -1,0 +1,101 @@
+.doct{
+    display: flex;
+}
+.schedule{
+    margin: 20px auto;
+    width: 35%;
+    /* height: auto; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   
+    border-radius: 1.5rem 1.5rem;
+}
+.schedule h3{
+    border-bottom: 1px solid #02132e;
+    background-color: #02132e;
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+.input-group{
+    margin: 10px;
+}
+.input-group h4{
+    margin: 5px auto;
+    border-bottom: 2px solid #02132e;
+    width: max-content;
+}
+form{
+    padding: 1rem;
+    margin: 0 20px ;
+    width: 100%;
+}
+.actions{
+    display: flex;
+    justify-content: space-evenly;
+}
+.submit input{
+   background-color: #02132e;
+   color: white;
+   padding: .5rem 1rem;
+   width: 100%;
+   font-size: 20px;
+   border: none;
+   cursor: pointer;
+   border-radius: 1rem;
+}
+.cancel input[type=reset]{
+    background-color: #779fe0;
+    color: #02132e;
+    padding: .5rem 1rem;
+    width: 100%;
+    font-size: 20px;
+    border: none;
+   border-radius: 1rem;
+   cursor: pointer;
+ }
+ .appointment{
+    margin: 30px auto;
+    width:60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   
+    border-radius: 1.5rem 1.5rem;
+    padding: 2rem;
+ }
+ .appointment h4{
+    align-self: center;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid #02132e;
+    width: max-content;
+ }
+ table a{
+    color: #02132e;
+ }
+ table{
+    border-collapse: collapse;
+    width: 100%;
+ }
+ th, td{
+    padding: 8px;
+ }
+ th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #02132e;
+    color: white;
+ }
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:hover {background-color: rgb(205, 202, 202);}
+.one:hover,.one a:hover{
+    background-color: #02132e;
+    color: #f2f2f2;
+}
+.two:hover, .two a:hover{
+    background-color: red;
+    color: white;
+}
