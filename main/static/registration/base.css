@@ -22,7 +22,7 @@ li{
 header{
     width: 100%;
     display: flex;
-    background: #00F2FE;
+    background: #02132e;
     justify-content: space-around;
     height: max-content;
     padding: 10px;
@@ -58,8 +58,8 @@ header{
     border-radius: 1.5rem 1.5rem;
 }
 .appointment h3{
-    border-bottom: 1px solid #00F2FE;
-    background-color: #00F2FE;
+    border-bottom: 1px solid #02132e;
+    background-color: #02132e;
     width: 100%;
     color: white;
     padding: 1rem;
