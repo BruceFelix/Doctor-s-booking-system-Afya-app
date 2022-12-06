@@ -67,8 +67,8 @@ h4{
     outline: none;
     border: none;
     color: rgb(11, 10, 10);
-    background-color:#91bbff;
+    background-color:#00F2FE;
 }
 .users button:nth-child(1){
-    background-color: #94b1e0;
+    background-color: #00F2FE;
 }
