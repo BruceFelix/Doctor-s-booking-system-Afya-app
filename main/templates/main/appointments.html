@@ -13,18 +13,18 @@ align-items: center;"
         <table border="1">
             <tr>
                 <th>Patient Name</th>
-                <th>Doctor Name</th>
+                <!-- <th>Doctor Name</th> -->
                 <th>Day</th>
-                <th>Accept</th>
-                <th>Reject</th>
+                <!-- <th>Accept</th>
+                <th>Reject</th> -->
             </tr>
             {% for person in appointments %}
             <tr>
                 <td>{{person.patient}}</td>
-                <td>{{person.doctor}}</td>
+                <!-- <td>{{person.doctor}}</td> -->
                 <td>{{person.day}}</td>
-                <td class="action one"> <a href="#">Accept</a></td>
-                <td class="action twstarto"> <a href="#">Reject</a></td>
+                <!-- <td class="action one"> <a href="#">Accept</a></td>
+                <td class="action twstarto"> <a href="#">Reject</a></td> -->
             </tr>
             {% endfor %}
 

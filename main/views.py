@@ -8,6 +8,8 @@ from .decorators import unauthenticated_user, allowed_users, admin_only, redirec
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.shortcuts import HttpResponse
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 # Create your views here.
 
@@ -30,9 +32,10 @@ def appointment(request):
     }
     return render(request, 'main/appointments.html', context)
 
-# @login_required(login_url='login')
-# def schedule(request):
-#     return render(request, 'main/schedule.html')
+def home(request):
+    doctors = Doctor.objects.all()
+    print(doctors)
+    return render(request, 'main/home.html', {'doctors': doctors})
 
 def signup(request):
     return render(request, 'registration/signup.html')
@@ -94,15 +97,23 @@ def patient(request):
             "county":county,
             "name":"Dr. " + schedule.doctor.user.username
         }
-#    user = request.user.first_name + " " + request.user.last_name
-    # patient = Patient.user.username
     user = Patient.objects.get(user=request.user)
-    
-    print(user)
-    if request.method == "POST":
+    user_email = request.user.email
 
+    if request.method == 'POST':
+        doctor = request.POST['doctor']
         day = request.POST['days']
-        patient = request.user
+        email = EmailMessage(
+            'Booked Appointment',
+            f'Greetings {user},\nThank you for booking an appointment with {doctor} on {day}',
+            settings.EMAIL_HOST_USER,
+            [user_email]
+        )   
+        email.fail_silently = True
+        email.send()
+
+    if request.method == "POST":
+        day = request.POST['days']
         doctor = request.POST['doctor'].replace("Dr. " , "")
         savedoctor = Doctor.objects.filter(user=User.objects.filter(username=doctor)[0])
 

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+    <title>Medic Booking app</title>
+</head>
+<body>
+    <header style="align-items: center; color: #00F2FE;">
+        <a href="{% url 'signup'%}">
+            <div class="name">
+                <h1> Medic</h1>
+                <h2> Booking </br> Platform</h2>
+            </div>
+        </a>
+        <div class="logged-in-user" style="color: white; display: flex; ">            
+            <a href="#doctors" style="margin: 0 20px; cursor: pointer;">View Doctors</a>
+
+
+            <!-- {% if user.is_authenticated %}
+                <p>Welcome {{ user.username }}</p> 
+                <a href="{% url 'logout' %}" style="margin: 0 20px; cursor: pointer;">Logout</a>
+
+            {% else %} -->
+                <a href="{% url 'signup' %}" style="margin: 0 20px; cursor: pointer;">Login</a>
+            <!-- {% endif %} -->
+        </div>
+</header>
+<main>
+    <div class="intro">
+        <div class="description">
+            <!-- <h1>Medic Booking Platform</h1>     -->
+            <p>Book for a consultation with our impressive doctors at the click of a button. </p> 
+        </div>
+
+    </div>
+    <div id="doctors">
+        <div class="heading">
+            <h2>Available Specialists</h2>
+        </div>
+        <div class="doctor-list">
+            {%  for doctor in doctors %}
+            <div class="doctor">
+                <div>
+                    <img src="{% static 'main/images/profile.png' %}" alt="">
+                </div>
+                <div>
+                    <h3>Name: Dr.{{doctor.user}}</h3>
+                    <p>Speciality: {{doctor.specialities}}</p>
+                    <p>Location: {{doctor.county}}</p>
+                </div>
+            </div>
+            {%  endfor %}
+        </div>
+    </div>
+</main>
+</body>
+</html>
