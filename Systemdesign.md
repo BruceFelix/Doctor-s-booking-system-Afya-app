@@ -15,4 +15,4 @@ So there are 3 user levels, administrator, doctor and patient. When a patient bo
 ## Activity Diagram
 ![image](https://user-images.githubusercontent.com/44478872/198990903-2594974f-6edf-4ec6-83a9-bcdaea7bb3ea.png)
 
-## Steep learning curve
+<!-- ## Steep learning curve -->
