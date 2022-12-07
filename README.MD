@@ -5,16 +5,13 @@ Medic booking app is a web application that simplyfies the process of booking fo
 [Deployed version](https://bruceafyaapp.up.railway.app/)
 
 ## Technologies used
-- Django==4.1.3
-- asgiref==3.5.2
-- crispy-bootstrap5==0.7
-- Django==4.1.3
-- django-crispy-forms==1.14.0
-- django-widget-tweaks==1.4.12
-- gunicorn==20.1.0
-- psycopg2-binary==2.9.5
-- sqlparse==0.4.3
-- whitenoise==6.2.0
+- Django framework
+- Python
+- JavaScript
+- HTML/CSS
+- Bootstrap
+- GMAIL
+- 
 ***
 
 ## Features 
@@ -31,6 +28,7 @@ Contributions to this project are always welcome. To add a new feature fork the 
 Before you run the project in your machine, ensure you do the following:
 
 . `git clone https://github.com/BruceFelix/Doctor-s-booking-system-Afya-app.git`
+
 . Create a virtual enviroment then run - 
 
 `pip install -r requirements.txt`
