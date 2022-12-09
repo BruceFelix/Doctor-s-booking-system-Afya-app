@@ -18,15 +18,7 @@
         </a>
         <div class="logged-in-user" style="color: white; display: flex; ">            
             <a href="#doctors" style="margin: 0 20px; cursor: pointer;">View Doctors</a>
-
-
-            <!-- {% if user.is_authenticated %}
-                <p>Welcome {{ user.username }}</p> 
-                <a href="{% url 'logout' %}" style="margin: 0 20px; cursor: pointer;">Logout</a>
-
-            {% else %} -->
-                <a href="{% url 'signup' %}" style="margin: 0 20px; cursor: pointer;">Login</a>
-            <!-- {% endif %} -->
+            <a href="{% url 'signup' %}" style="margin: 0 20px; cursor: pointer;">Login</a>
         </div>
 </header>
 <main>

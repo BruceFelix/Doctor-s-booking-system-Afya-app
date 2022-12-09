@@ -7,9 +7,7 @@ a{
     text-decoration: none;
     color: white;
 }
-body{
-    background-color: #f1ebeb;
-}
+
 ul{
     list-style: none;
     display: flex;
@@ -72,7 +70,7 @@ img{
 }
 .intro{
 
-    background: linear-gradient(135deg, #ffffffb0, #02132e91),url('../images/home.jpg') no-repeat right center;
+    background: linear-gradient(135deg, #ffffffb0, #02132e62),url('../images/home.jpg') no-repeat right center;
     background-size: cover;
     height: 565px; width: 100%;
     padding: 20px;
@@ -114,8 +112,8 @@ img{
     width: 17%;
     padding: 5px;
     border-radius: 20px;
-    margin: 20px o;
-    box-shadow: 4px 8px white;
+    margin: 20px 0;
+    box-shadow: 2px 3px 3px 1px #000000;
 }
 .doctor-list{
     margin: 20px 50px;
